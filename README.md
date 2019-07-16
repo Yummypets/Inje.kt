@@ -24,12 +24,14 @@ class MainApplication : Application() {
 ### 3. Get the dependency anywhere you want from the injector
 
 ``` kotlin
-class UserFragment : Fragment() {
+class UserFragment : Fragment(), HasDependencies {
 
     override fun onViewCreated() {
-        val user = DependencyInjection.getDependency<UserRepository>().getUser()
+        val user = getDependency<UserRepository>().getUser()
     }
    
 }
 
 ``` 
+
+> Don't forget to use the interface HasDependencies for a cleaner implementation
