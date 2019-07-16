@@ -27,7 +27,7 @@ class MainApplication : Application() {
 class UserFragment : Fragment() {
 
     override fun onViewCreated() {
-        DependencyInjection.getDependency<UserRepository>().getUser()
+        val user = DependencyInjection.getDependency<UserRepository>().getUser()
     }
    
 }
