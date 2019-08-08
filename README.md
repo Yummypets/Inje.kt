@@ -47,12 +47,15 @@ class MainApplication : Application() {
 ``` kotlin
 class UserFragment : Fragment(), HasDependencies {
 
+  // Get your dependency.
+  val userRepository = getDependency<UserRepository>()
+
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
 
-      // Get your dependency.
-      val userRepository = getDependency<UserRepository>()
-    }
+      // Use it!
+      userRepository.someCoolStuff()
+  }
 }
 ```
 
