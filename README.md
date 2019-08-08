@@ -5,37 +5,56 @@
 
 Simple Kotlin injection under 30 lines
 
-### 1. Import the file DependencyInjection.kt in your project
-### 2. Declare your dependencies
+```kotlin
+// Register dependency on App start.
+DependencyInjection.register<UserRepository> { ApiUserRepository }
+
+// Get it later on.
+val userRepository = DependencyInjection.getDependency<UserRepository>()
+```
+
+## About
+- [x] Simple & type-safe api (generics FTW)
+- [x] Lightweight: 1 file ~ 30 lines of pure kotlin
+- [x] Does NOT rely on evil Annotations
+
+## Installation
+- Copy and paste `Inje.kt` file in your project.  
+- Make sure  you import the `kotlin-reflect` on which Inject relies:  
+`implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"`
+- There is no step 3 \o/
+
+## Usage
+### 1. Register your dependencies on App Start
 
 ``` kotlin
 class MainApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        injectDependencies()
-    }
-    
-    private fun injectDependencies() {
-        DependencyInjection.apply {
-            register<UserRepository> { ApiUserRepository }
-        }
+
+        // Register your dependency by providing
+        // a concrete object for a given Interface.
+        DependencyInjection.register<UserRepository> { ApiUserRepository }
     }
 }
+```
 
-``` 
+### 2. Add the `HasDependencies` interface
 
-### 3. Get the dependency anywhere you want from the injector
+### 3. Get the dependency anywhere you want
 
 ``` kotlin
 class UserFragment : Fragment(), HasDependencies {
 
-    override fun onViewCreated() {
-        val user = getDependency<UserRepository>().getUser()
+  override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+      super.onViewCreated(view, savedInstanceState)
+
+      // Get your dependency.
+      val userRepository = getDependency<UserRepository>()
     }
-   
 }
+```
 
-``` 
-
-> Don't forget to use the interface HasDependencies for a cleaner implementation
+## Contributors
+[PAFagniez](https://github.com/PAFagniez), [S4cha](https://github.com/s4cha)
