@@ -1,4 +1,8 @@
 # Inje.kt
+[![Language: Kotlin](https://img.shields.io/badge/language-Kotlin-7963FE.svg?style=flat)](https://kotlinlang.org)
+![Platform: Android 8+](https://img.shields.io/badge/platform-Android-68b846.svg?style=flat)
+[![License: MIT](http://img.shields.io/badge/license-MIT-lightgrey.svg?style=flat)](https://github.com/Yummypets/Inje.kt/blob/master/LICENSE)
+
 Simple Kotlin injection under 30 lines
 
 ### 1. Import the file DependencyInjection.kt in your project
