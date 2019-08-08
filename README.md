@@ -48,13 +48,13 @@ class MainApplication : Application() {
 class UserFragment : Fragment(), HasDependencies {
 
   // Get your dependency.
-  val userRepository = getDependency<UserRepository>()
+  val userRepository: UserRepository = getDependency()
 
   override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
       super.onViewCreated(view, savedInstanceState)
 
       // Use it!
-      userRepository.someCoolStuff()
+      userRepository.doSomeCoolStuff()
   }
 }
 ```
